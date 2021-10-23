@@ -1,0 +1,346 @@
+<!-- Este é um método de documentação para renderizar HTML e UTF-8 -->
+<!DOCTYPE HTML>
+<!-- "lang" ajuda a definir o idioma de um elemento, por exemplo, a língua em que elementos não-editáveis são escritos, ou a língua em que elementos editáveis devem ser escritos pelo usuário. -->
+<html lang="pt-br"> 
+  <!-- Este método providencia metadados, título, links dos ícones, das fontes, do CSS, do JavaScript e o estilo interno -->
+  <head>
+    <head> 
+      <!-- Um metadado para renderizar os caracteres estrangeiros correctamente -->
+      <meta charset="UTF-8"> 
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- Um metadado para tornar o site compatível com todos os dispositivos -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Um título -->
+      <title>Página de Cadastro</title>
+    
+    <!-- Um estilo interno para estilizar o corpo de HTML -->
+    <style>
+      /* Expandir 100% para ambas a altura e a largura de HTML e body */
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Corpo inteiro pintado com a cor cinza claro */
+      body {
+        background-color: gainsboro;
+      }
+
+      /* Deixar toda a tipografia do corpo inteiro bonita e legível */
+      body,
+      button,
+      input,
+      select,
+      textarea {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      header, footer
+      {
+        text-align: center;
+      }
+
+      /* Limitar a largura do formulário para 320 pixels */
+      form {
+        max-width: 320px;
+
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <!-- O <body> é um elemento para estilizar vários elementos como h1, h2, navbar, p, div, etc. -->
+  <body>
+    <!-- O <header> é um elemento do cabeçalho -->
+    <header>
+      <!-- O h1 é um elemento de título de primeiro grau -->
+      <h1>FORMULÁRIO DE CADASTRO PESSOAL</h1>
+      <!-- Um parágrafo -->
+      <p> LEIA COM ATENÇÃO E PREENCHA CORRETAMENTE SEUS DADOS!</p>
+      <br>
+    </header>
+
+    <!-- Um subcorpo principal -->
+    <main>
+      <!-- O <form> é um elemento do formulário com atributo "action", que encaminha para a próxima página ao submeter e "method" contendo o valor "get", que só funciona em puro HTMl -->
+      <form action="sucesso.html" id="cadastro" method="get">
+        <!-- O h2 é um elemento de título de segundo grau -->
+        <h2>FAÇA SEU CADASTRO:</h2>
+
+        <!-- <fieldset> é um elemento utilizado para agrupar vários controles do formulário -->
+        <fieldset>  
+          <!-- a legenda do <fieldset> -->
+          <legend>DADOS PESSOAIS</legend>
+
+          <!-- uma divisão para afastar os grupos -->
+          <div class="nome">
+            <!-- Um parágrafo agrupando o rótulo para afastar o campo de entrada -->
+            <!-- <label> é um elemento de rótulo com um atributo "for", que vincula ao campo de entrada -->
+            <p><label for="nome">Nome Completo:</label></p>
+            <!-- <input> é um elemento de campo de entrada com um identificador a fim de ser vinculado ao <label>. Contém required, que significa obrigateorio, aria-required, deisgnado para pessoas com deficiência visual, e "type" que é um tipo de campo de entrada -->
+            <!-- onkeyup é um evento em JavaScript que captura a função do código interno em JavaScript -->
+            <input type="text" name="nome" id="nome" required aria-required="true" onblur="formataNome()">
+          </div>
+
+          <div class="cpf">
+            <p><label for="cpf">CPF:</label></p>
+            <input type="text" name="cpf" maxlength="14" placeholder="Insira seu CPF:" id="cpf" required aria-required="true" onkeypress="formataCPF()">
+          </div>
+
+          <div class="rg">
+            <p><label for="rg">RG:</label></p>
+            <input type="text" name="rg" maxlength="14" placeholder="Insira seu RG:" id="rg" onkeypress="nRG()">
+          </div>
+
+          <!-- Uma lista suspensa -->
+          <div class="sexo">
+            <p><label for="sexo">Sexo:</label></p>
+            <select name="sexo" id="sexo">
+              <option value="branco" selected>Selecione...</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+            </select>
+          </div>
+
+          <!-- Uma lista de escolhas -->
+          <div class="estado-civil">
+            <p>Estado Civil:</p>
+            <input type="radio" name="estadocivil" id="ss" value="s">
+            <label for="ss">Solteiro (a)</label>
+
+            <br>
+            <input type="radio" name="estadocivil" id="sc" value="c">
+            <label for="sc">Casado (a)</label>
+
+            <br>
+            <input type="radio" name="estadocivil" id="so" value="o">
+            <label for="so">Outros</label>
+          </div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+          <legend>CONTATO / ENDEREÇO</legend>
+
+          <div class="celular">
+            <p><label for="telcelular">Telefone Celular:</label></p>
+            <input type="text" name="telcelular" maxlength="13" id="telcelular" required aria-required="true" onkeypress="ttelCelular()">
+          </div>
+
+          <div class="fixo">
+            <p><label for="telefonefixo">Telefone Fixo:</label></p>
+            <input type="text" name="telefonefixo" maxlength="12" id="telefonefixo" onkeypress="ftelefoneFixo()">
+          </div>
+
+          <div class="rua">
+            <p><label for="rua">Rua:</label></p>
+            <input type="text" name="rua" id="rua" required aria-required="true"> <br>
+          </div>
+          <div class="número">
+              <p><label for="nº">Nº:</label></p>
+            <input type="text" name="nº" maxlength="6" id="nº" required aria-required="true"> 
+          </div>
+          
+          <br>
+
+          <div class="bairro">
+            <p><label for="bairro">Bairro:</label></p>
+            <input type="text" name="bairro" id="bairro" required aria-required="true"> 
+            </div>
+
+            <br>
+
+          <div class="cidade">
+            <p><label for="cidade">Cidade:</label></p>
+            <input type="text" name="cidade" id="cidade" required aria-required="true"> 
+          </div>
+          
+            <br>
+
+          <div class="estado">
+            <p><label for="estado">Estado:</label></p>
+            <select name="estado" id="estado">
+              <option>Escolha seu estado...</option>
+              <option value="ac">Acre</option>
+              <option value="al">Alagoas</option>
+              <option value="am">Amazonas</option>
+              <option value="ap">Amapá</option>
+              <option value="ba">Bahia</option>
+              <option value="ce">Ceará</option>
+              <option value="df">Distrito Federal</option>
+              <option value="es">Espírito Santo</option>
+              <option value="go">Goiás</option>
+              <option value="ma">Maranhão</option>
+              <option value="mt">Mato Grosso</option>
+              <option value="ms">Mato Grosso do Sul</option>
+              <option value="mg">Minas Gerais</option>
+              <option value="pa">Pará</option>
+              <option value="pb">Paraíba</option>
+              <option value="pr">Paraná</option>
+              <option value="pe">Pernambuco</option>
+              <option value="pi">Piauí</option>
+              <option value="rj">Rio de Janeiro</option>
+              <option value="rn">Rio Grande do Norte</option>
+              <option value="ro">Rondônia</option>
+              <option value="rs">Rio Grande do Sul</option>
+              <option value="rr">Roraima</option>
+              <option value="sc">Santa Catarina</option>
+              <option value="se">Sergipe</option>
+              <option value="sp">São Paulo</option>
+              <option value="to">Tocantins</option>
+            </select>
+          </div>
+
+          <div class="cep">
+            <p><label for="cep">CEP: </label></p>
+            <input type="text" name="cep" maxlength="9" id="cep">
+          </div>
+
+          <div class="email">
+            <p><label for="email">E-mail:</label></p>
+            <input type="e-mail" name="email" placeholder="exemplo@gmail.com" id="email" required aria-required>
+          </div>
+
+          <!-- Uma área de mensagem -->
+          <div clas="mensagem">
+            <p><label for="deixe sua mensagem">Deixe Sua Mensagem:</label></p>
+            <textarea name="observacao" id="obs" placeholder="Escreva sua mensagem:"> </textarea>
+          </div>
+
+        </fieldset>
+
+        <br>
+
+        <!-- Botões de enviar e limpar contendo tipos, nomes, eventos em JavaScript e valores -->
+        <input type="submit" name="enviar" onclick="pergunta1()" value="Enviar">
+        <input type="button" name="limpar" onclick="pergunta2()" value="Limpar">
+
+      </form>
+    </main>
+
+    <!-- Um rodapé -->
+    <footer>
+      <p>
+        Projeto licenciado sob a <a href="https://www.mit.edu/~amini/LICENSE.md">MIT</a>
+      </p>
+    </footer>
+
+    <!-- Um código-fonte interno em JavaScript -->
+    <script type="text/javascript">
+      // função para mostrar mensagem ao abrir o formulário
+      function msg1() {
+        alert("SEJA BEM-VINDO AO NOSSO SISTEMA DE CADASTRO!");
+      }
+
+      window.addEventListener("load", msg1);
+
+
+      function msg2() {
+        alert("AQUI SEUS DADOS ESTARÃO SEGUROS!");
+      }
+
+      window.addEventListener("load", msg2);
+
+
+      // função para verificar se nome possue números
+      function formataNome() {
+        var nome = cadastro.nome.value;
+        if (nome.indexOf("1") != -1
+          || nome.indexOf("2") != -1
+          || nome.indexOf("3") != -1
+          || nome.indexOf("4") != -1
+          || nome.indexOf("5") != -1
+          || nome.indexOf("6") != -1
+          || nome.indexOf("7") != -1
+          || nome.indexOf("8") != -1
+          || nome.indexOf("9") != -1
+          || nome.indexOf("0") != -1) {
+          alert("Somente letras aqui");
+          cadastro.nome.value = "";
+        }
+      }
+
+      //função para completar RG com traço
+      function nRG() {
+        //variável para receber o valor digitado no campo RG
+        var rg = cadastro.rg.value;
+        //quando o campo, já tiver sido preenchido com 12 números
+        //length = tamanho
+        if (rg.length == 12) {
+          //insere o traço antes do dígito
+          cadastro.rg.value = cadastro.rg.value + "-";
+        }
+      }
+
+
+      //função para completar CPF com pontos e traço
+      function formataCPF() {
+        //variável para receber o valor digitado no campo CPF
+        var cpf = cadastro.cpf.value;
+        //quando o campo, já tiver sido preenchido com 3 números
+        //length = tamanho
+        if (cpf.length == 3) {
+          //insere o ponto depois do 3º nº digitado
+          cadastro.cpf.value = cadastro.cpf.value + ".";
+        }
+        else if (cpf.length == 7) {
+          //insere o ponto depois do 7º caractere digitado
+          cadastro.cpf.value = cadastro.cpf.value + ".";
+        }
+        else if (cpf.length == 11) {
+          //insere um traço depois do 11º caractere digitado
+          cadastro.cpf.value = cadastro.cpf.value + "-";
+        }
+      }
+
+      //função para completar celular com espaço e traço
+      function ttelCelular() {
+        //variável para receber o valor digitado no campo celular
+        var telcelular = cadastro.telcelular.value;
+        //quando o campo, já tiver sido preenchido com 2 nº
+        if (telcelular.length == 2) {
+          //insere um espaço depois do 2º nº digitado
+          cadastro.telcelular.value = cadastro.telcelular.value + " ";
+        }
+        else if (telcelular.length == 8) {
+          //insere um traço depois do 8º caractere digitado
+          cadastro.telcelular.value = cadastro.telcelular.value + "-";
+        }
+      }
+
+      //função para completar telefone fixo com espaço e traço
+      function ftelefoneFixo() {
+        var telefonefixo = cadastro.telefonefixo.value;
+        if (telefonefixo.length == 2) {
+          cadastro.telefonefixo.value = cadastro.telefonefixo.value + " ";
+        }
+        else if (telefonefixo.length == 7) {
+          //insere um traço depois do 7º caractere digitado
+          cadastro.telefonefixo.value = cadastro.telefonefixo.value + "-";
+        }
+      }
+
+      // Uma função
+      function pergunta1() {
+        // Checa se quiser enviar no diálogo
+        if (confirm("Deseja enviar agora?")) {
+          return true;
+        }
+        // Senão
+        else {
+          return false;
+        }
+      }
+
+      // Uma função para informar de limpar
+      function pergunta2() {
+        // Checa se quiser limpar no diálogo
+        if (confirm("Todos os campos serão apagados. Confirma?")) { cadastro.reset(); }
+      }
+    </script>
+  </body>
+
+</html>
